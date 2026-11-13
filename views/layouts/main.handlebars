@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Real Estate Listings</title>
+        <script src="http://cdn.tailwindcss.com"></script>
+    </head>
+    <body class="flex flex-col min-h-screen bg-teal-100">
+        <!--Top navigation -->
+        <nav class="bg-teal-300 text-white pl-4 pr-4 p-3 text-xs flex justify-between"> 
+            <a href="/">Home</a>
+            <div>
+                <!--Navigation for admin users-->
+            {{#if isAdmin}}
+                <div class="flex flex-row">
+                <a href="/admin">Admin Dashboard</a>
+                <form action="/logout" method="post" class="pl-3">
+                    <button type="submit"> Logout </button>
+                </form>
+                </div>
+                <!--Navigation for visitors-->
+            {{else}}
+                <a href="/login">Login</a>
+            {{/if}}
+            </div>
+        </nav>
+        <!--Banner -->
+        <header class="bg-teal-600 text-white p-6 text-center">
+            <h1 class="text-3xl font-bold"> Ready to Move?</h1>
+            <p class="text-xs p-2">Find your next home in our extensive database of properties for sale and rent</p>
+            <button class="text-xs bg-pink-500 px-4 py-2 m-2 rounded-sm">Learn more about Us</button>
+        </header>    
+        
+        <!--Main body of page-->
+        <main>
+            {{{body}}}
+        </main>
+
+        <!--Footer -->
+        <footer class="bg-teal-200 text-gray-600 p-2 text-xs text-center mt-auto">
+            <p>&copy; 2026 Real Estate Listings. All rights reserved.</p>
+        </footer>
+    </body>
+</html>

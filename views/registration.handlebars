@@ -1,0 +1,82 @@
+
+<div class="flex justify-center text-xs h-full">
+<div class="bg-white flex flex-col w-[400px] h-auto p-6 mt-10 ">
+<h2 class="text-xl pb-3 font-bold">Current Users</h2>
+    <table>
+        <thead class="text-left">
+            <th>Name</th>
+            <th>Username</th>
+            <th>Role</th>
+        </thead>
+        <tbody>
+            <tr> <td colspan="5"> <hr class="mt-2 mb-1"> </td></tr>
+
+            {{#each users}}
+            <tr>
+                <td class="pr-5">{{this.name}}</td>
+                <td class="pr-5">{{this.username}}</td>
+                <td class="pr-5">{{this.role}}</td>
+            </tr>
+            {{/each}}
+
+        </tbody>
+    </table>
+</div>
+</div>
+
+
+<!--Registration section -->
+<div class="flex justify-center text-xs h-full mt-10">
+    <div>
+    {{#if errors}}
+<div>
+    <ul class="bg-red-100 p-2 border border-red-300 rounded-sm text-red-700">
+        {{#each errors}}
+        <li>{{this}}</li>
+        {{/each}}
+    </ul>
+</div>
+{{/if}}
+
+    <!--Register form -->
+    <form class="bg-white flex flex-col w-[400px] h-auto p-6 mt-2 " action="/admin/registration" method="post">
+        
+        <!--Register new admin header -->
+        <h2 class="text-xl pb-3 font-bold">Register New Admin</h2>
+
+         <!--Name field -->
+        <label class="font-bold pb-2"
+            for="name"> Name</label> 
+
+        <input class="border pl-3 p-1"
+            type="text" id="name" name="name" placeholder="Name" value="{{formData.name}}"> 
+
+        <!--Email or Username field -->
+        <label class="font-bold pb-2 mt-3"
+            for="username"> Email or Username</label> 
+        
+        <input class="border pl-3 p-1"
+            type="text" id="username" name="username" placeholder="Email / Username" value="{{formData.username}}"> 
+         
+        <!--Password field -->
+        <label class="font-bold pb-2 mt-3"
+            for="password"> Password </label> 
+       
+        <input class="border pl-3 p-1"
+            type="password" id="password" name="password" placeholder="******************"> 
+
+        <!--Confirm Password field -->
+        <label class="font-bold pb-2 mt-3"
+            for="confirmPassword"> Confirm Password </label> 
+       
+        <input class="border pl-3 p-1"
+            type="password" id="confirmPassword" name="confirmPassword" placeholder="******************"> 
+
+        <!--Submit register button-->
+        <button class="bg-teal-500 text-white mt-6 p-2 pl-4 pr-4 self-start rounded-sm font-bold"
+            type="submit"> Sign Up </button>
+
+    </form>
+ 
+    </div>
+</div>

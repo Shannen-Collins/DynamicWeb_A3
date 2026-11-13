@@ -1,0 +1,21 @@
+<!-- Admin Dashboard -->
+<div class="bg-white flex justify-center flex-col h-full m-20 mt-5 p-5 rounded-md">
+    <!-- Dashboard header -->
+    <h2 class="text-3xl font-bold pb-3">Dashboard</h2>
+    <!-- Welcome message for admin and super admin users -->
+    <h3 class="text-xl pb-3"> Welcome, {{#if isSuperAdmin}} super admin! {{else}} admin! {{/if}}</h3>
+    <!--Description of user's functionalities -->
+    <p>Manage the listings from the Properties page{{#if isSuperAdmin}}, or manage users on the Registration page{{/if}}.</p>
+    
+    <div class="text-white pt-6 flex flex-row mb-3">
+        <!-- Manage Properties link -->
+        <p><a class="text-xs bg-blue-500 px-4 py-3 m-2 rounded-md ml-0"  
+            href="/admin/properties">Manage Properties</a></p>
+
+        <!-- Manage admin users link, only if super admin -->
+        {{#if isSuperAdmin}}
+        <p><a class="text-xs bg-pink-500 px-4 py-3 m-2 rounded-md"  
+            href="/admin/registration">Manage Users</a></p>
+        {{/if}}
+    </div>
+</div>

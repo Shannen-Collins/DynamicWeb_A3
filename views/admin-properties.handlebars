@@ -1,0 +1,62 @@
+<!-- Admin Properties Management Page -->
+<div class="flex justify-center">
+<div>
+<div class="p-4 pl-0 bg-white m-5 pb-10">
+    <!-- Manage Properties Header -->
+    <h2 class="font-bold text-3xl m-5 mb-7">Manage Properties</h2>
+    <!-- Add property link -->
+    <p><a class="text-xs bg-blue-500 px-4 py-3 rounded-md text-white ml-5"  
+            href="/admin/properties/new">Add a property</a></p>
+</div>
+<div class="bg-white m-5 w-fit px-10 text-left pt-4">
+<!-- Table of properties -->
+<table>
+    <thead>
+        <tr>
+            <th>Photo</th>
+            <th>Address</th>
+            <th>Suburb</th>
+            <th>Price</th>
+            <th class="text-right">Actions</th>
+        </tr>
+    </thead>
+<tbody>
+    <tr> <td colspan="5"> <hr class="mt-2 mb-1"> </td></tr>
+    {{#each properties}}
+    <tr>
+        <td>
+            {{#if this.imageName}}
+            <img class="w-[100px] mb-2 pr-3 mt-2"
+            src="/houses/{{this.imageName}}" alt="{{this.address}}">
+            {{else}}
+            <span>No photo </span>
+            {{/if}}
+        </td>
+        <td class="pr-5">{{this.address}}</td>
+        <td class="pr-5"> {{this.suburb}}</td>
+
+        <td class="pr-5"> ${{this.listPrice}}</td>
+       
+       <!-- Edit and Delete links -->
+        <td class="text-right pl-3"> 
+            <div class="flex flex-row">
+                <a href="/admin/properties/{{this.id}}/edit"
+                    class="pr-3 text-teal-600 underline">Edit</a>
+                <form action="/admin/properties/{{this.id}}/delete"
+                    method="post" class="inline-form"
+                    onsubmit="return confirm('Delete this property?')">
+                    <button type="submit" class="text-red-600 underline">Delete</button>
+                </form>
+                </div>
+        </td>
+    </tr>
+    {{else}}
+    <tr>
+        <td colspan="5">No properties yet.</td>
+    </tr>
+    {{/each}}
+</tbody>
+</table>
+</div>  
+</div>
+</div>

@@ -1,0 +1,43 @@
+<!--Home page -->
+<div class="flex justify-center p-3 text-xs">
+
+   <!--Locations sidebar for filtering -->
+    <aside class="mr-4 rounded-t-md bg-gray-400 h-fit">
+        <h3 class="text-white p-2 font-bold rounded-t-md">Locations</h3>
+        <ul class="bg-white pl-2 pr-2 text-gray-600 pt-0.5 pb-1 mb-3">
+            
+            {{#each sidebarSuburb}}
+                <li class="p-1">   
+                    <a href="/?suburb={{this.name}}" class="pr-8">
+                        {{#if this.active}}
+                            <b> {{this.name}} </b>
+                        {{else}}
+                            {{this.name}}
+                        {{/if}}
+                    </a>
+                    {{#unless @last}}
+                    <hr class="mt-1">
+                    {{/unless}}
+                </li>
+            {{/each}} 
+        
+        </ul>
+        <br>
+    </aside>
+
+    <!--Main list of properties -->
+    <main class="container w-[1100px] text-white text-center">
+        <div class="grid grid-cols-7 gap-4">
+            {{#each properties}}
+            <div class="bg-gray-700 rounded-md">
+                <p class="p-2"> {{this.address}}</p>
+                <div class=" object-cover">
+                    <img class="p-0 h-[120px] object-cover"
+                        src="/houses/{{this.imageName}}" >
+                </div>
+                <p class="p-2 font-bold"> ${{this.listPrice}}</p>
+            </div>
+            {{/each}}
+        </div> 
+    </main>
+</div>
